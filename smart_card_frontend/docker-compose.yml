@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: smart_card_frontend
+    restart: always
+    ports:
+      - "3000:80"
