@@ -34,3 +34,12 @@ CREATE TABLE applications (
     responded_at TIMESTAMP NULL,
     user_email VARCHAR(255)
 );
+
+-- INSERT DEFAULT DATA
+INSERT INTO users (mobile, email) VALUES
+('9876543210', 'user@example.com'),
+('7309330638', 'jainn.samriddhi03@gmail.com'),
+('9811824051', 'pradeeparya@gmail.com');
+
+INSERT INTO admin_users (email, password)
+VALUES ('admin@gmail.com', 'admin123');

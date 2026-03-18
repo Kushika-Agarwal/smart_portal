@@ -7,7 +7,6 @@ const session = require("express-session");
 // app.use(cors());
 app.use(
   cors({
-    // origin: ["http://localhost:3000", "http://localhost:5173"],
     origin: ["http://136.114.126.147:3000", "http://136.114.126.147:5173"],
     credentials: true,
   })

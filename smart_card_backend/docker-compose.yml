@@ -10,10 +10,6 @@ services:
       - mysql
     env_file:
       - .env
-    volumes:
-      - .:/app
-      - /app/node_modules
-
   mysql:
     image: mysql:8
     container_name: smart_card_mysql
