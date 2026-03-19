@@ -6,11 +6,18 @@ const svgCaptcha = require("svg-captcha");
 const session = require("express-session");
 // app.use(cors());
 app.use(
+ 
   cors({
-    origin: ["http://136.114.126.147:3000", "http://136.114.126.147:5173"],
+    origin: [
+      "http://localhost:5173",
+      "http://136.114.126.147:5173",
+      "http://urccardstatuscheck.psquickit.net"
+    ],
     credentials: true,
   })
 );
+         
+    
 app.use(express.json());
 
 app.use(

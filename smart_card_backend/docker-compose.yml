@@ -1,27 +1,19 @@
 services:
-
+ 
   backend:
-    build: .
-    container_name: smart_card_backend
-    restart: always
-    ports:
-      - "5000:5000"
-    depends_on:
-      - mysql
-    env_file:
-      - .env
-  mysql:
-    image: mysql:8
-    container_name: smart_card_mysql
-    restart: always
-    ports:
-      - "3307:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: smart_card
-    volumes:
-      - mysql_data:/var/lib/mysql
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
-volumes:
-  mysql_data:
+    build: .
+
+    container_name: smart_card_backend
+
+    restart: always
+
+    ports:
+
+      - "5000:5000"
+
+    env_file:
+
+      - .env
+
+ 
