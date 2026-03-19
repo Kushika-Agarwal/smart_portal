@@ -22,10 +22,14 @@ app.use(express.json());
 
 app.use(
   session({
-    secret: "yourSecretKey123", // change this in production
+    secret: "yourSecretKey123",
     resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false }, // true only in HTTPS
+    saveUninitialized: false,
+    cookie: {
+      secure: false,      // change to true AFTER HTTPS
+      httpOnly: true,
+      sameSite: "lax",    // now safe since same domain
+    },
   })
 );
 const PORT = process.env.PORT || 5000;
