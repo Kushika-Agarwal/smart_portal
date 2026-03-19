@@ -7,7 +7,7 @@ function AdminLogin() {
 
   const login = async () => {
     const res = await axios.post(
-      `${import.meta.env.VITE_API_URL}/api/admin/login`,
+      `/api/admin/login`,
       // "http://136.114.126.147:5000/api/admin/login",
       { email, password },
     );

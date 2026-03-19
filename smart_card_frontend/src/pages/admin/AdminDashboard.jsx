@@ -27,18 +27,12 @@ function AdminDashboard() {
   };
 
   const fetchPending = async () => {
-    const res = await axios.get(
-      `${import.meta.env.VITE_API_URL}/api/admin/pending`,
-      axiosConfig,
-    );
+    const res = await axios.get(`/api/admin/pending`, axiosConfig);
     setPending(res.data);
   };
 
   const fetchResponded = async () => {
-    const res = await axios.get(
-      `${import.meta.env.VITE_API_URL}/api/admin/responded`,
-      axiosConfig,
-    );
+    const res = await axios.get(`/api/admin/responded`, axiosConfig);
     setResponded(res.data);
   };
 
@@ -56,7 +50,7 @@ function AdminDashboard() {
     if (!responseText.trim()) return;
 
     await axios.post(
-      `${import.meta.env.VITE_API_URL}/api/admin/respond`,
+      `/api/admin/respond`,
       {
         id: selectedQuery.id,
         response: responseText,

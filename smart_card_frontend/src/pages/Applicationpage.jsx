@@ -59,7 +59,7 @@ function ApplicationForm() {
 
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/application/submit`,
+        `/api/application/submit`,
         //"http://136.114.126.147:5000/api/application/submit",
         formData,
         { withCredentials: true },

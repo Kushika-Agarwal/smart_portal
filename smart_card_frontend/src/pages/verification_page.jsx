@@ -18,7 +18,7 @@ function AuthPage() {
 
   const generateCaptcha = () => {
     setCaptchaUrl(
-      `${import.meta.env.VITE_API_URL}/api/auth/captcha?${Date.now()}`,
+      `/api/auth/captcha?${Date.now()}`,
     );
     //setCaptchaUrl(`http://136.114.126.147:5000/api/auth/captcha?${Date.now()}`);
   };
@@ -42,7 +42,7 @@ function AuthPage() {
 
     try {
       const captchaRes = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/auth/verify-captcha`,
+        `/api/auth/verify-captcha`,
         // "http://136.114.126.147:5000/api/auth/verify-captcha",
         { userInput: captchaInput },
         { withCredentials: true },
@@ -55,7 +55,7 @@ function AuthPage() {
       }
 
       await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/auth/send-otp`,
+        `/api/auth/send-otp`,
         //   "http://136.114.126.147:5000/api/auth/send-otp",
         { mobile },
         { withCredentials: true },
@@ -78,7 +78,7 @@ function AuthPage() {
 
     try {
       await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/auth/verify-otp`,
+        `/api/auth/verify-otp`,
         //  "http://136.114.126.147:5000/api/auth/verify-otp",
         { mobile, otp },
         { withCredentials: true },
