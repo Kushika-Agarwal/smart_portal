@@ -1,61 +1,4 @@
-// import React from "react";
-// import { useNavigate } from "react-router-dom";
 
-// function Home() {
-
-//   const navigate = useNavigate();
-
-//   const handleCheckStatus = () => {
-//     navigate("/verification");
-//   };
-
-//   return (
-//     <div className="min-h-screen bg-gray-100 flex flex-col">
-
-    
-      
-
-     
-//       <div className="flex flex-1 flex-col justify-center items-center text-center px-20">
-// <h2 className="text-xl font-bold text-gray-800 p-10">
-//           Smart Card
-//         </h2>
-       
-//         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-//           This Portal is only for those Beneficiaries whose mobile number and email id is available with SMART CARD'S team and you have applied for cards in the offline mode.
-//         </h1>
-
-//         {/* Subtitle */}
-//         <p className="text-gray-600 text-lg mb-8 max-w-md">
-//           Check your application status securely using your mobile number.
-//         </p>
-
-//         {/* Button */}
-//         <button
-//           onClick={handleCheckStatus}
-//           className="
-//             bg-blue-600
-//             hover:bg-blue-700
-//             text-white
-//             font-medium
-//             px-6
-//             py-3
-//             rounded-lg
-//             shadow-md
-//             transition
-//             duration-200
-//           "
-//         >
-//           Check Status
-//         </button>
-
-//       </div>
-
-//     </div>
-//   );
-// }
-
-// export default Home;
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -72,7 +15,7 @@ function Home() {
   return (
 
 
-      <div className="flex flex-1 flex-col justify-center items-center text-center px-6 md:px-20 py-20">
+      <div className="flex flex-1 flex-col justify-center items-center text-center px-6 md:px-20 pt-5">
 
         <h2 className="text-2xl font-bold text-white mb-6 drop-shadow">
           Smart Card Portal

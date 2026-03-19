@@ -23,12 +23,12 @@ function SuccessPage() {
           </h1>
 
           {/* Message */}
-          <p className="text-gray-700 mb-6">
+          <p className="text-gray-700 ">
             Thank you for submitting your query.
           </p>
 
           {/* Query ID */}
-          <div className="bg-gray-100 p-4 rounded-lg mb-6">
+          <div className="bg-gray-100 p-4 rounded-lg ">
 
             <p className="text-sm text-gray-600">
               Your Query ID
@@ -44,7 +44,15 @@ function SuccessPage() {
           <p className="text-gray-600 text-sm mb-6">
             You will receive an email with the status within 2 days.
           </p>
-
+        <p className="mt-4 text-sm text-gray-700 bg-blue-50 px-4 pb-3 rounded-lg border border-blue-100">
+  If you have any additional point or query, you can write it to us on{" "}
+  <a
+    href="mailto:Helpdesk.CSDte@PSQuickIT.com"
+    className="font-semibold text-blue-600 hover:text-blue-700 underline underline-offset-2"
+  >
+    Helpdesk.CSDte@PSQuickIT.com
+  </a>
+</p>
           {/* Button */}
           <button
             onClick={() => navigate("/")}

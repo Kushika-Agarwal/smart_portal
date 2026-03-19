@@ -15,7 +15,7 @@ function App() {
   return (
       <Layout>
 
-    <div className="flex justify-center items-center mt-20">
+    <div className="flex justify-center items-center">
     <Router>
       <Routes>
 

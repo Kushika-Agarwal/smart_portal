@@ -2,16 +2,14 @@ import React, { useState } from "react";
 import axios from "axios";
 
 function AdminLogin() {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const login = async () => {
-
     const res = await axios.post(
-      // "http://localhost:5000/api/admin/login",
-      "http://136.114.126.147:5000/api/admin/login",
-      { email, password }
+      `${import.meta.env.VITE_API_URL}/api/admin/login`,
+      // "http://136.114.126.147:5000/api/admin/login",
+      { email, password },
     );
 
     localStorage.setItem("adminToken", res.data.token);
@@ -19,11 +17,8 @@ function AdminLogin() {
   };
 
   return (
-
     <div className="flex justify-center items-center  px-4">
-
-      <div className="bg-white/90 backdrop-blur-md border border-white/40 p-8 rounded-xl shadow-xl w-full max-w-md">
-
+      <div className="bg-white/90 backdrop-blur-md border border-white/40 p-8 rounded-xl shadow-xl w-full max-w-md mt-6">
         {/* Title */}
         <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6">
           Admin Login
@@ -33,7 +28,7 @@ function AdminLogin() {
         <input
           placeholder="Email"
           type="email"
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
           className="w-full border border-gray-300 p-3 rounded-lg mb-4 
           focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
@@ -42,7 +37,7 @@ function AdminLogin() {
         <input
           placeholder="Password"
           type="password"
-          onChange={e => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
           className="w-full border border-gray-300 p-3 rounded-lg mb-6 
           focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
@@ -55,13 +50,9 @@ function AdminLogin() {
         >
           Login
         </button>
-
       </div>
-
     </div>
-
   );
-
 }
 
 export default AdminLogin;
