@@ -17,10 +17,7 @@ function AuthPage() {
   }, []);
 
   const generateCaptcha = () => {
-    setCaptchaUrl(
-      `/api/auth/captcha?${Date.now()}`,
-    );
-    //setCaptchaUrl(`http://136.114.126.147:5000/api/auth/captcha?${Date.now()}`);
+    setCaptchaUrl(`/api/auth/captcha?${Date.now()}`);
   };
 
   const validateMobile = (mobile) => {
@@ -43,9 +40,8 @@ function AuthPage() {
     try {
       const captchaRes = await axios.post(
         `/api/auth/verify-captcha`,
-        // "http://136.114.126.147:5000/api/auth/verify-captcha",
         { userInput: captchaInput },
-        { withCredentials: true },
+        { withCredentials: true }
       );
 
       if (!captchaRes.data.success) {
@@ -56,15 +52,14 @@ function AuthPage() {
 
       await axios.post(
         `/api/auth/send-otp`,
-        //   "http://136.114.126.147:5000/api/auth/send-otp",
         { mobile },
-        { withCredentials: true },
+        { withCredentials: true }
       );
 
       setOtpSent(true);
     } catch {
       setMessage(
-        "Your registered details are not matching, please contact us through email mentioned below in the details.",
+        "Your registered details are not matching, please contact support."
       );
       generateCaptcha();
     }
@@ -79,9 +74,8 @@ function AuthPage() {
     try {
       await axios.post(
         `/api/auth/verify-otp`,
-        //  "http://136.114.126.147:5000/api/auth/verify-otp",
         { mobile, otp },
-        { withCredentials: true },
+        { withCredentials: true }
       );
 
       localStorage.setItem("userVerified", "true");
@@ -92,36 +86,40 @@ function AuthPage() {
   };
 
   return (
-    <div className=" flex flex-col ">
+    <div className="min-h-screen flex flex-col px-4 py-6 ">
+      
       {/* HEADER */}
-      <header className="p-6 text-center ">
-        <h2 className="text-xl font-bold text-white drop-shadow">
+      <header className="text-center mb-4">
+        <h2 className="text-lg sm:text-xl font-bold text-white drop-shadow">
           Smart Card Portal
         </h2>
       </header>
 
       {/* FORM */}
-      <div className="flex  justify-center items-center ">
-        <div className="bg-white/90 backdrop-blur-md border border-white/40 p-8 rounded-xl shadow-2xl w-96">
-          <h2 className="text-2xl font-semibold mb-6 text-center">
+      <div className="flex justify-center items-center flex-1">
+        <div className="bg-white/90 backdrop-blur-md border border-white/40 p-4 sm:p-6 md:p-8 rounded-xl shadow-2xl w-full max-w-md">
+          
+          <h2 className="text-xl sm:text-2xl font-semibold mb-6 text-center">
             Mobile Verification
           </h2>
 
+          {/* Mobile Input */}
           <input
             type="text"
             placeholder="Enter Mobile Number"
             value={mobile}
             onChange={(e) => setMobile(e.target.value)}
-            className="w-full border p-2 rounded mb-4"
+            className="w-full border p-2 sm:p-3 rounded mb-4 text-sm sm:text-base"
           />
 
           {!otpSent && (
             <>
-              <div className="flex justify-between items-center mb-3">
+              {/* CAPTCHA */}
+              <div className="flex flex-col sm:flex-row items-center gap-3 mb-3">
                 <img
                   src={captchaUrl}
                   alt="captcha"
-                  className="border px-4 py-2 bg-gray-100 rounded"
+                  className="border px-3 py-2 bg-gray-100 rounded w-full sm:w-auto"
                 />
 
                 <button
@@ -132,17 +130,19 @@ function AuthPage() {
                 </button>
               </div>
 
+              {/* Captcha Input */}
               <input
                 type="text"
                 placeholder="Enter Captcha"
                 value={captchaInput}
                 onChange={(e) => setCaptchaInput(e.target.value)}
-                className="w-full border p-2 rounded mb-4"
+                className="w-full border p-2 sm:p-3 rounded mb-4 text-sm sm:text-base"
               />
 
+              {/* Continue Button */}
               <button
                 onClick={handleSendOTP}
-                className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+                className="w-full bg-blue-600 text-white py-2 sm:py-3 rounded hover:bg-blue-700 text-sm sm:text-base"
               >
                 Continue
               </button>
@@ -151,31 +151,36 @@ function AuthPage() {
 
           {otpSent && (
             <>
+              {/* OTP Input */}
               <input
                 type="text"
                 placeholder="Enter OTP"
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
-                className="w-full border p-2 rounded"
+                className="w-full border p-2 sm:p-3 rounded text-sm sm:text-base"
               />
 
-              <p className="text-sm mt-3 text-blue-600 flex items-center gap-2">
+              <p className="text-xs sm:text-sm mt-3 text-blue-600 flex items-center gap-2 text-center sm:text-left">
                 <span className="text-green-500 text-lg">✔</span>
                 OTP has been sent to your registered email.
               </p>
 
               <button
                 onClick={handleVerifyOTP}
-                className="w-full bg-green-600 text-white py-2 rounded mt-4 hover:bg-green-700"
+                className="w-full bg-green-600 text-white py-2 sm:py-3 rounded mt-4 hover:bg-green-700 text-sm sm:text-base"
               >
                 Verify & Continue
               </button>
             </>
           )}
 
+          {/* Error Message */}
           {message && (
-            <p className="mt-4 text-center text-red-600">{message}</p>
+            <p className="mt-4 text-center text-red-600 text-sm">
+              {message}
+            </p>
           )}
+
         </div>
       </div>
     </div>
